@@ -1,4 +1,4 @@
-chat:
+bcapp:
   build: .
   command: node_modules/.bin/nodemon index.js
   environment:
