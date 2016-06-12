@@ -1,20 +1,20 @@
-FROM node:4.3.2
+FROM node:4.4.5
 
-RUN useradd --user-group --create-home --shell /bin/false app &&\
+RUN useradd --user-group --create-home --shell /bin/false bcdev &&\
   npm install --global npm@3.7.5
 
-ENV HOME=/home/app
+ENV HOME=/home/bcdev
 
-COPY package.json npm-shrinkwrap.json $HOME/chat/
-RUN chown -R app:app $HOME/*
+COPY package.json npm-shrinkwrap.json $HOME/bcapp
+RUN chown -R bcdev:bcdev $HOME/*
 
-USER app
-WORKDIR $HOME/chat
+USER bcdev
+WORKDIR $HOME/bcapp
 RUN npm install
 
 USER root
-COPY . $HOME/chat
+COPY . $HOME/bcapp
 RUN chown -R app:app $HOME/*
-USER app
+USER bcdev
 
 CMD ["node", "index.js"]

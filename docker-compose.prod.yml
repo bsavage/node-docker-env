@@ -1,4 +1,4 @@
-chat:
+bcapp:
   build: .
   environment:
     NODE_ENV: production
